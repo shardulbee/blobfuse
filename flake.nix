@@ -43,6 +43,7 @@
             zigpkgs.master
             python311
             python311Packages.pip
+            macfuse-stubs
           ];
         };
 

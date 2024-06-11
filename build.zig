@@ -36,6 +36,11 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    // exe.addIncludePath("/usr/local/include/fuse");
+    // exe.addLibPath("/usr/local/lib");
+    exe.linkSystemLibrary("libfuse");
+    exe.linkLibC();
+
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
     // step when running `zig build`).
