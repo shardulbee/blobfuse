@@ -34,8 +34,15 @@
         pkgs = import nixpkgs {inherit overlays system;};
       in rec {
         devShells.default = pkgs.mkShell {
+          venvDir = ".venv";
+          postVenvCreation = ''
+          unset SOURCE_DATE_EPOCH
+          pip install -r requirements.txt
+          '';
           nativeBuildInputs = with pkgs; [
             zigpkgs.master
+            python311
+            python311Packages.pip
           ];
         };
 
